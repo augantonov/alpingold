@@ -1,0 +1,79 @@
+{% set img_uri = node.field_image.entity.uri.value %}
+{% set img_url = file_url(img_uri) %}
+{% set img_alt = node.field_image.alt %}
+{% set length_image = node.field_image|length  %}
+{% set img_arr = node.field_image %}
+{# set comment_count =  content.comment['#items'].comment_count #}
+{% set youtube_url = node.field_youtube_url.value %}
+{# set vimeo_url = node.field_vimeo_url.value #}
+
+  
+{# set image640x510 = getUrlByImageStyle(img_uri, 'image640x510')  #}
+{# set image1200x550 = getUrlByImageStyle(img_uri, 'image1200x550')  #}
+
+{# set display_video_type = node.field_display_video_type.value #}
+{% if not page %}
+list trek
+
+
+
+{% else %}
+
+<section class="section-base">
+	<div class="container">
+		<div class="row">
+			{{ content.field_content_section_1 }}
+		</div>
+	</div>
+</section>
+<section class="section-image light" data-parallax="scroll" data-bleed="100" data-image-src="{{ img_url }}">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="counter counter-vertical counter-icon">
+					<div>
+						<h3>{{ 'Data'|t }}</h3>
+						<p class="text-50 text-black no-margin">{{ node.field_data_trek.value }}</p> 
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div>
+					<h3>{{ 'Distance'|t }}</h3>
+					<p class="text-50 text-black no-margin">{{ node.field_distance.value }}</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div>
+					<h3>{{ 'Group size'|t }}</h3>
+					<p class="text-50 text-black no-margin">{{ node.field_group_size.value }}</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div>
+					<h3>{{ 'Duration'|t }}</h3>
+					<p class="text-50 text-black no-margin">{{ node.field_duration.value }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-base">
+	<div class="container">
+		<div class="row">
+			{{ content.field_content_section_2 }}
+		</div>
+		<hr class="space" />
+	</div>
+</section>
+<section class="section-base section-color section-google-map">
+	<div class="container">
+		<div class="google-map" data-marker="../themes/drupalet_alpins/media/marker.png" data-coords="{{ node.field_google_map.value }}"></div>
+		<div class="row">
+			{{ content.field_content_section_3 }}
+		</div>
+	</div>
+</section>
+
+			
+{% endif %}

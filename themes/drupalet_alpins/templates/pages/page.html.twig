@@ -1,0 +1,78 @@
+<!-- HEADER START --> 
+{% include header_skin %}
+<!-- HEADER END --> 
+{% set sidebar = '' %}
+
+{% if node.field_sidebar.0.value is not empty %}
+	{% set sidebar = node.field_sidebar.0.value %}
+{% endif %}
+
+
+<main>
+<!-- CONTENT --> 
+{% if page.slideshow_content %}
+	{{ page.slideshow_content }}
+{% endif %}	
+
+{% if page.help %}
+	<div class="help drp-help-region section">
+		<div class="container">
+			<div class="row">
+				{{ page.help }}
+			</div>
+		</div>
+	</div>
+{% endif %}
+{% if page.before_content %}
+	{{ page.before_content }}
+{% endif %}
+
+
+
+{% if sidebar == 'left' %}
+	<section class="section-base">
+		<div class="container">
+			<div class="row">	
+				<div class="col-lg-4">
+					{% if page.sidebar_left %}
+						{{ page.sidebar_left }}
+					{% endif %}
+				</div>
+				<div class="col-lg-8">
+					{% include '@drupalet_alpins/pages/main.html.twig' %}	
+				</div>
+			</div>
+		</div>
+	</section>
+	
+{% elseif sidebar == 'right' %}
+<section class="section-base">
+	<div class="container">
+		<div class="row">	
+
+				<div class="col-lg-8">
+					{% include '@drupalet_alpins/pages/main.html.twig' %}	
+				</div>
+				<div class="col-lg-4">
+					{% if page.sidebar_right %}
+						{{ page.sidebar_right }}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% else %}
+
+	{% include '@drupalet_alpins/pages/main.html.twig' %}	
+
+{% endif %}
+{% if page.content_bottom %}
+	{{ page.content_bottom }}
+{% endif %}
+
+</main>
+
+<!-- FOOTER START --> 
+	{% include '@drupalet_alpins/footer_styles/footer-classic.html.twig' %}
+<!-- FOOTER END --> 

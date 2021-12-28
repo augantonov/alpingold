@@ -1,0 +1,112 @@
+
+{% set custom_classes = '' %}
+{% if label == '' %}
+{% set custom_classes = 'no-title' %}
+{% endif %}
+{%
+  set classes = [
+    'block',
+	'drp-block',
+	'sidebar-box',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    custom_classes
+  ]
+%}
+{%
+  set classes_section = [
+    'section',
+	'section-base',
+	'block',
+	'drp-block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    custom_classes
+  ]
+%}
+{%
+  set classes_footer = [
+    'block',
+	'drp-block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    custom_classes
+  ]
+%}
+
+
+
+
+{% if region == 'sidebar_right' or region == 'sidebar_left' %}
+
+{% if label %}
+	<h3>{{ label }}</h3>
+{% endif %}
+<hr class="space-sm" />
+<div {{ attributes.addClass(classes) }}>
+	{{ title_suffix }}
+	{{ content }}
+</div>
+<hr class="space-sm" />
+
+{% elseif region == 'slideshow_content' %}
+<!-- start slideshow -->
+		{{ content }}
+<!-- end slideshow -->
+
+{% elseif region == 'footer' %}
+
+	{% if label %}
+		<h4 class="sidebar-heading block-title" {{ title_attributes }}><span>{{ label }}</span></h4>
+	{% endif %}
+	{{ title_suffix }}
+	{{ content }}
+	
+{% elseif region == 'branding' or region == 'footer_left' or region == 'copyright' or region == 'footer_right' or region == 'breadcrumbs' or region == 'content_menu_toggle' %}
+	{{ content }}
+{% elseif region == 'footer_first' or region == 'footer_second' or region == 'footer_third' or region == 'footer_four' %}
+
+		{% if label %}
+			<h3 {{ title_attributes }}>{{ label }}</h3>
+		{% endif %}
+		
+		{{ title_suffix }}
+		{{ content }}
+
+{% elseif region == 'content' or region == 'before_content' or region == 'content_bottom' or region == 'content_bottom_portfolio_details' %}
+	{% if content is not empty %}
+
+		<section {{ attributes.addClass(classes_section) }}>
+			<div class="container">
+				{% if label %}
+					<div class="title align-center align-left-md">
+						<h2>{{ label }}</h2>
+						<p class="desc subtitle-section"></p>
+					</div>
+				{% endif %}
+				
+			
+				<div class="row">
+					{{ title_prefix }}
+					{{ content }}
+				</div>
+			</div>
+		</section>
+	{% endif %}
+		
+{% else %}
+<div {{ attributes.addClass(classes) }}>
+	<div class="container">
+		{% if label %}
+			<div class="row">
+				<h3 class="sep-line-one">{{ label }}</h3>
+			</div>
+		{% endif %}
+		<div class="row">
+			{% block content %}
+			  {{ content }}
+		  {% endblock %}
+		</div>
+	</div>
+</div>
+{% endif %}

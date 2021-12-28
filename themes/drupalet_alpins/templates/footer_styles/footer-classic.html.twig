@@ -1,0 +1,37 @@
+<footer class="light">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4">
+				{% if page.footer_first %}
+					{{ page.footer_first }}
+				{% endif %}
+			</div>
+			<div class="col-lg-4">
+				{% if page.footer_second %}
+					{{ page.footer_second }}
+				{% endif %}
+				
+			</div>
+			<div class="col-lg-4">
+				{% if page.footer_third %}
+					{{ page.footer_third }}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="footer-bar">
+		<div class="container"> 
+			<span>
+				{% if page.footer_left %}
+					{{ page.footer_left }}
+				{% endif %}
+			</span> 
+			<span>
+				{% if page.footer_right %}
+					{{ page.footer_right }}
+				{% endif %}
+			</span> 
+		</div>
+	</div>
+	
+</footer>

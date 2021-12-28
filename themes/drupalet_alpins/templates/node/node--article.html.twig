@@ -1,0 +1,83 @@
+{% if node.getRevisionAuthor().field_full_name.value %}
+    {% set full_name = node.getRevisionAuthor().field_full_name.value %}
+{% endif %}
+{% if full_name is null %}
+  {% set full_name =  author_name %}
+{% endif %}
+
+{% set img_uri = node.field_image.entity.uri.value %}
+{% set img_url = file_url(img_uri) %}
+{% set img_alt = node.field_image.alt %}
+{% set length_image = node.field_image|length  %}
+{% set img_arr = node.field_image %}
+{% set comment_count =  content.comment['#items'].comment_count %}
+{# set youtube_url = node.field_youtube_url.value #}
+{# set vimeo_url = node.field_vimeo_url.value #}
+
+  
+{# set image640x510 = getUrlByImageStyle(img_uri, 'image640x510')  #}
+{# set image1200x550 = getUrlByImageStyle(img_uri, 'image1200x550')  #}
+
+{# set display_video_type = node.field_display_video_type.value #}
+{% if not page %}
+
+<div class="grid-item">
+	<div class="cnt-box cnt-box-blog-side boxed" data-href="{{ path('entity.node.canonical', {'node': node.id}) }}"> <a href="{{ path('entity.node.canonical', {'node': node.id}) }}" class="img-box">
+		<div class="blog-date"> <span>{{ node.getCreatedTime|date('d') }}</span> <span>{{ node.getCreatedTime|date('M Y') }}</span> </div>
+		<img src="{{ img_url }}" alt="{{ node.title.value }}" /> </a>
+		<div class="caption">
+			<h2>{{ node.title.value }}</h2>
+			<ul class="icon-list icon-list-horizontal">
+				<li><i class="icon-calendar"></i><a href="{{ path('entity.node.canonical', {'node': node.id}) }}">{{ node.getCreatedTime|date('M d, Y') }}</a></li>
+				<li><i class="icon-bookmark"></i><a href="{{ path('entity.node.canonical', {'node': node.id}) }}">{{ content.field_blog_categories }} </a></li>
+				<li><i class="icon-user"></i><a href="{{ path('entity.node.canonical', {'node': node.id}) }}">{{ full_name }}</a></li>
+			</ul>
+			<p> {{ node.body.summary }} </p>
+		</div>
+	</div>
+</div>
+
+{% else %}
+{% if length_image > 1 %}
+						
+{% else %}
+	{% if node.field_youtube_url.value is not empty %}
+		
+	{% else %}
+		<img class="img-responsive" src="{{ img_url }}" alt="{{ img_alt }}"> 
+	{% endif %}	
+{% endif %} 
+
+
+<hr class="space-sm" />
+<div class="icon-links icon-links-grid icon-social social-colors"> <a data-social="share-facebook" class="facebook"><i class="icon-facebook"></i></a> <a data-social="share-twitter" class="twitter"><i class="icon-twitter"></i></a> <a data-social="share-linkedin" class="linkedin"><i class="icon-linkedin"></i></a> <a data-social="share-google" class="google"><i class="icon-google"></i></a> </div>
+
+<hr class="space-sm" />
+
+<ul class="icon-list icon-list-horizontal">
+	<li><i class="icon-calendar"></i><a href="{{ path('entity.node.canonical', {'node': node.id}) }}">{{ node.getCreatedTime|date('M d, Y') }}</a></li>
+	<li><i class="icon-bookmark"></i><a href="{{ path('entity.node.canonical', {'node': node.id}) }}">{{ content.field_blog_categories }} </a></li>
+	<li><i class="icon-user"></i><a href="{{ path('entity.node.canonical', {'node': node.id}) }}">{{ full_name }}</a></li>
+</ul>
+
+{{ content.body }}
+
+<div class="tags-meta-single-post">
+	Tags: {{ content.field_tags }}
+</div>
+
+<hr class="space-sm" />
+
+<div class="clear" id="comment-list">
+	<div class="comments-area" id="comments">
+		<h2 class="comments-title">{{ 'Comments'|t }}</h2>
+		<div class="comments-outer p-b30"> 
+			
+			<!-- LEAVE A REPLY START -->
+			<div class="comment-respond m-t30" id="respond"> {{ content.comment }} </div>
+			<!-- LEAVE A REPLY END --> 
+		</div>
+	</div>
+</div>
+			
+{% endif %}

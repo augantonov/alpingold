@@ -1,0 +1,55 @@
+global-styling:
+  version: VERSION
+  header: false
+  css:
+    theme:
+      themekit/css/bootstrap-grid.css: {}
+      themekit/css/style.css: {}
+      themekit/css/glide.css: {}
+      themekit/css/magnific-popup.css: {}
+      themekit/css/content-box.css: {}
+      themekit/css/contact-form.css: {}
+      themekit/css/media-box.css: {}
+      themekit/css/skin.css: {}
+      themekit/css/update.css: {}
+      themekit/media/icons/iconsmind/line-icons.min.css: {}
+  js:
+    themekit/scripts/jquery.min.js: {}
+    themekit/scripts/main.js: {}
+    themekit/scripts/parallax.min.js: {}
+    themekit/scripts/glide.min.js: {}
+    themekit/scripts/magnific-popup.min.js: {}
+    themekit/scripts/tab-accordion.js: {}
+    themekit/scripts/imagesloaded.min.js: {}
+    themekit/scripts/progress.js: {}
+    themekit/scripts/custom.js: {}
+    themekit/scripts/contact-form/contact-form.js: {}
+    #themekit/scripts/sidebar.js: {}
+    themekit/scripts/isotope.min.js: {}
+    themekit/scripts/maps.min.js: {}
+    https://maps.googleapis.com/maps/api/js?key=AIzaSyDZYJWyXxDyEvFS0geUksEOyCW4t5X-UEM: {}
+    themekit/scripts/update.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+
+maintenance_page:
+  version: VERSION
+  css:
+    theme:
+      css/maintenance-page.css: {}
+
+views-infinite-scroll:
+  version: VERSION
+  js:
+    js/override/infinite-scroll.js : {}
+
+views-block-trek-style5:
+  version: VERSION
+  js:
+    themekit/scripts/isotope.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.debounce

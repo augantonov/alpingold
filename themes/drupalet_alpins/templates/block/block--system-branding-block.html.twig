@@ -1,0 +1,16 @@
+{% set attributes = attributes.addClass('site-branding') %}
+{% block content %}
+  {% if site_logo %}
+    <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="site-branding-logo">
+      {% if setting_logo %}
+		<img class="logo-default scroll-hide" src="{{ site_logo|replace({'.svg': '.png'}) }}" alt="{{ 'Home'|t }}" />
+		<img class="logo-retina scroll-hide" src="{{ site_logo|replace({'.svg': '.png'}) }}" alt="{{ 'Home'|t }}" /> 
+		<img class="logo-default scroll-show" src="{{ site_logo|replace({'.svg': '-white-solid.png'}) }}" alt="{{ 'Home'|t }}" /> 
+		<img class="logo-retina scroll-show" src="{{ site_logo|replace({'.svg': '-white-solid.png'}) }}" alt="{{ 'Home'|t }}" /> 
+      {% else %} 
+		<img class="logo-default scroll-hide" src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
+      {% endif %}  
+    </a>
+  {% endif %}
+
+{% endblock %}

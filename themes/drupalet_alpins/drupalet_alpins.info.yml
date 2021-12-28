@@ -1,0 +1,37 @@
+name: Drupalet Alpins
+type: theme
+description: 'A flexible, recolorable theme with many regions and a responsive, mobile-first layout.'
+package: drupaletthemes
+base theme: false
+libraries:
+  - drupalet_alpins/global-styling
+  - core/jquery
+
+libraries-override:
+  views_infinite_scroll/views-infinite-scroll: drupalet_alpins/views-infinite-scroll
+
+regions:
+  search: 'Search'
+  branding: 'Branding'
+  header_right: 'Header Right'
+  breadcrumbs: 'Breadcrumbs'
+  help: 'Help'
+  main_menu: 'Main menu'
+  menu_content: 'Menu Content'
+  slideshow_content: 'Slideshow'
+  before_content: 'Before Content'
+  content: 'Main content'
+  after_content: 'After Content'
+  contact_info: 'Contact Info'
+  sidebar_left: 'Sidebar Left'
+  sidebar_right: 'Sidebar Right'
+  footer_first: 'Footer Fisrt'
+  footer_second: 'Footer Second'
+  footer_third: 'Footer Third'
+  footer_left: 'Footer Left'
+  footer_right: 'Footer Right'
+  other: 'Other'
+
+version: '9.x'
+core_version_requirement: ^8.8 || ^9
+project: 'drupal'

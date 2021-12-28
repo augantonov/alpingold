@@ -1,0 +1,22 @@
+<div class="maso-list gap-30" data-columns="3" data-columns-lg="2" data-columns-sm="1">
+	<div class="menu-inner">
+		<div><i class="menu-btn"></i><span>Menu</span></div>
+		<ul>
+			<li class="active"><a data-filter="maso-item" href="#">All</a></li>
+			{% if header %}
+				{{ header }}
+			{% endif %}
+
+		</ul>
+	</div>
+	<div class="maso-box">
+		{{ rows }}
+		{{ empty }}
+		{{ pager }}
+		{{ more }}
+	</div>
+	{% if footer %}
+		{{ footer }}
+	{% endif %}
+</div>
+<hr class="space" />

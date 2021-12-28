@@ -1,0 +1,14 @@
+{% if header %}
+	{{ header }}
+{% endif %}
+<div class="grid-list gap-60" data-columns="4" data-columns-md="2" data-columns-sm="1" data-gap="60">
+	<div class="grid-box">
+		{{ rows }}
+		{{ empty }}
+		{{ pager }}
+		{{ more }}
+	</div>
+</div>
+{% if footer %}
+	{{ footer }}
+{% endif %}

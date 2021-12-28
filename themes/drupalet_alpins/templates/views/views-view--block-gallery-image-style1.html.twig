@@ -1,0 +1,24 @@
+{% if header %}
+	{{ header }}
+{% endif %}
+<div class="album" data-album-anima="fade-bottom" data-columns-md="2" data-columns-sm="1">
+	<div class="cnt-album-box-x">
+		
+			<div class="grid-list list-gallery" data-lightbox-anima="fade-top" data-columns="3" data-columns-md="2">
+				<div class="grid-box">
+					{{ rows }}
+					{{ empty }}
+					{{ pager }}
+					{{ more }}
+				</div>
+				<div class="list-pagination">
+					<ul class="pagination" data-page-items="6" data-pagination-anima="fade-right">
+					</ul>
+				</div>
+			</div>
+		
+	</div>
+</div>
+{% if footer %}
+	{{ footer }}
+{% endif %}

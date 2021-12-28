@@ -1,0 +1,126 @@
+.hide {
+	display: none
+}
+ul.glide__slides li a img {
+	height: auto!important;
+}
+.block-simplenews input[type=email] {
+	padding: 10px;
+	border-color: rgba(39, 79, 117, 0.08);
+}
+.block-simplenews .button {
+	font-weight: 600;
+	width: calc(100% - 15px);
+	background-color: #379cf4;
+	border-color: #379cf4;
+	padding: 10px 30px;
+	font-size: 15px;
+	color: #fff;
+	border-radius: 3px;
+	display: inline-block;
+	text-decoration: none;
+	border-style: solid;
+	border-width: 1px;
+	position: relative;
+	cursor: pointer;
+	outline: none;
+	text-align: center;
+	transition: all .5s;
+}
+.client-slider .container .slider li img {
+	max-width: 160px!important;
+}
+.section-call > .container .cnt-call
+ {
+    transform: translateY(-237px);
+    position: absolute;
+    right: 30px;
+    left: 30px;
+}
+.slider-user .container .row .thumb-bar img{
+	width:50px!important;
+}
+
+@media (min-width: 994px){
+	.controls-out.arrows-left .glide__arrow{
+		left:-253px!important;
+	}
+}
+@media (min-width: 994px){
+	.controls-out.arrows-left .glide__arrow--right {
+		left: -207px!important;
+	}
+}
+.padding-top-30{
+	padding-top:30px;
+}
+.cnt-box.cnt-box-side img{
+	height:auto!important
+}
+.icon-list.icon-list-horizontal li a span {
+    padding-left: 0px!important;
+}
+.comment-form input[type=text],
+.comment-form textarea,
+#search-block-form input[type=search],
+.search-form input[type=search],
+.contact-form imput[type=text],
+.contact-form .form-text,
+.contact-form input[type=email],
+.contact-form textarea {
+    padding: 10px;
+    width: 100%;
+    border: solid 1px #e6e6e6;
+}
+.contact-form textarea{
+	height:119px;
+}
+.tags-meta-single-post{
+    text-align: right;
+
+}
+.tags-meta-single-post a {
+    margin-right: 4px;
+    text-decoration: none;
+}
+
+
+.search-form__submit, .form-submit {
+    background-color: #379cf4;
+    border-color: #379cf4;
+	padding: 10px 30px;
+    font-size: 15px;
+    color: #fff;
+    border-radius: 3px;
+    display: inline-block;
+    text-decoration: none;
+    border-style: solid;
+    border-width: 1px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    transition: all .5s;
+	margin-top:20px;
+}
+.tags-block a {
+    margin-right: 10px;
+    text-decoration: none;
+}
+.content-page-taxonomy .views-row{
+	margin-bottom:30px;
+}
+nav.pager:before {
+    display: none;
+}
+nav.pager{
+	margin-top:40px;
+}
+.search-help-link{
+	display:block;
+}
+
+.google-map-section .container{
+	padding-top:40px!important;
+	padding-bottom:40px!important;
+}

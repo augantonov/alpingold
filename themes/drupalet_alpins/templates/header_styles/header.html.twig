@@ -1,0 +1,63 @@
+{% set header_onoff = node.drpn_node_class.0.value %} {# drpn_node_class = header on/off #}
+{% set header_image_url = node.drpn_node_page_heder_background_image.0.value %}
+{% set header_sub_title = node.drpn_node_page_header_sub_title.0.value %}
+
+
+{% if node.field_menu_styles.0.value == 2 %}
+	{% set menu_style = 'menu-classic menu-fixed align-right' %}
+{% else %}
+	{% set menu_style = 'menu-classic menu-fixed menu-transparent light align-right' %}
+{% endif %}
+
+{# drpn_node_settings_1 = menu styles #}
+
+
+
+
+<nav class="{{ menu_style }}" data-menu-anima="fade-in">
+	<div class="container">
+		<div class="menu-brand"> 
+			{% if page.branding %} 
+				{{ page.branding }}
+			{% endif %}
+		</div>
+		<i class="menu-btn"></i>
+		<div class="menu-cnt">
+			{% if page.main_menu %}
+			  {{ page.main_menu }}
+			{% endif %}
+			<div class="menu-right">
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+{% if header_onoff == 'style1' %}
+<header class="header-image ken-burn-center light" data-parallax="true" data-natural-height="1080" data-natural-width="1920" data-bleed="0" data-image-src="{{ header_image_url }}" data-offset="0">
+	<div class="container">
+		<h1>{{ node.title.value }}</h1>
+		<h2>{{ header_sub_title }}</h2>
+		
+		 {% if page.breadcrumbs %}
+			{% set has_breadcrumb = ' has-breadcrumb' %}
+			
+				{{ page.breadcrumbs }}
+			
+		{% endif %}
+			
+		
+	</div>
+</header>
+
+{% elseif header_onoff == 'style2' %}
+
+<header class="header-base">
+	<div class="container">
+		<h1>{{ node.title.value }}</h1>
+		<h2>{{ header_sub_title }}</h2>
+	</div>
+</header>
+{% else %}
+	
+{% endif %}

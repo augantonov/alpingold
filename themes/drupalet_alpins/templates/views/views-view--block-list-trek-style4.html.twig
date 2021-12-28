@@ -1,0 +1,19 @@
+{% if header %}
+	{{ header }}
+{% endif %}
+<hr class="space-sm" />
+<div class="grid-list pagination-top-right" data-columns="3" data-columns-md="2" data-columns-sm="1">
+	<div class="grid-box">
+		{{ rows }}
+		{{ empty }}
+		{{ pager }}
+		{{ more }}
+	</div>
+	<div class="list-pagination">
+		<ul class="pagination align-center" data-page-items="3" data-page-items-md="2" data-pagination-anima="fade-right">
+		</ul>
+	</div>
+</div>
+{% if footer %}
+	{{ footer }}
+{% endif %}

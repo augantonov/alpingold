@@ -1,0 +1,65 @@
+
+{% import _self as menus %}
+
+
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+   
+    {% if menu_level == 0 %}
+		{% set menu_li = 'nav-item' %}
+		{% set menu_a = 'nav-link-level1' %}
+	  <ul{{ attributes.addClass('rd-navbar-nav') }} id="main-menu">
+    {% elseif menu_level == 1 %}
+		{% set menu_li = 'nav-dropdown-item' %}
+		{% set menu_a = 'nav-dropdown-link' %}
+      <ul class="rd-navbar-dropdown">
+	 {% else %}
+	 	{% set menu_li = 'nav-subdropdown-item' %}
+		{% set menu_a = 'nav-subdropdown-link' %}
+		 <ul class="rd-navbar-dropdown">
+    {% endif %}
+	
+	
+	
+	
+		
+    {% for item in items %}
+	{% set a = '' %}
+	{% if menu_level == 1 %}	
+		{% if item.is_expanded == 1 %}
+			{% set a = 'dropdown-submenu' %}
+		{% else %}
+			{% set a = '' %}
+		{% endif %}
+	{% endif %}
+	
+      {%
+        set classes = [
+          'menu-item',
+		  'nav-item',
+		  'rd-navbar--has-dropdown',
+		  'rd-navbar-submenu',
+		  menu_li,
+          item.is_expanded ? 'menu-item--expanded dropdown',
+          item.is_collapsed ? 'menu-item--collapsed',
+		  a,
+          item.in_active_trail ? 'menu-item--active-trail',
+          item.attributes.drp_class
+        ]
+      %}
+      
+	  <li {{ item.attributes.addClass(classes) }} {{ menu_level }}>
+        {{ link(item.title, item.url, { 'class':[menu_a]}) }}
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+
+        {% endif %}
+
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

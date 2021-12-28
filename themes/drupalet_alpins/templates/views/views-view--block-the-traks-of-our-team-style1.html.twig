@@ -1,0 +1,22 @@
+<div class="background-slider">
+	{% if header %}
+		{{ header }}
+	{% endif %}
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6">
+			<ul class="slider" data-options="type:slider,nav:true,arrows:true,perView:3,perViewLg:2,perViewSm:1,gap:30,controls:out">
+				{{ rows }}
+				{{ empty }}
+				{{ pager }}
+				{{ more }}
+			</ul>
+		</div>
+		<div class="col-lg-6" data-anima="fade-left" data-time="2000">
+			{% if footer %}
+				{{ footer }}
+			{% endif %}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+{% if header %}
+	{{ header }}
+{% endif %}
+<div class="col-lg-9">
+	<ul class="slider" data-options="type:carousel,nav:true,perView:3,perViewSm:2,perViewXs:1,gap:30,controls:out,autoplay:3000">
+		{{ rows }}
+		{{ empty }}
+		{{ pager }}
+		{{ more }}
+	</ul>
+</div>
+{% if footer %}
+	{{ footer }}
+{% endif %}
