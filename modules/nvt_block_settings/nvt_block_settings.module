@@ -1,0 +1,217 @@
+<?php
+
+/**
+ * @file
+ * Module for adding classes to blocks.
+ */
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\block\Entity\Block;
+use Drupal\file\Entity\File;
+use Drupal\Core\Ajax\CommandInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function nvt_block_settings_form_block_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    if (\Drupal::currentUser()->hasPermission('administer nvt_block_settings')) {
+         foreach (array_keys($form['actions']) as $action) {
+            if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+                $form['actions'][$action]['#submit'][] = 'nvt_block_settings_form_submit';
+            }
+        }
+        /** @var \Drupal\block\BlockInterface $block */
+        $block = $form_state->getFormObject()->getEntity();
+        $form['#attached']['library'][] = 'nvt_block_settings/ntv-block-admin';
+        //$config = $block->getConfiguration();
+        $form['advanced'] = array(
+            '#title' => t('NaviTeam Block settings'),
+            '#type' => 'details',
+        );
+
+        $form['third_party_settings']['block_attributes'] = [
+            '#type' => 'details',
+            '#title' => t('Block attributes'),
+            '#tree' => TRUE,
+            '#group' => 'advanced',
+        ];
+        // This will automatically be saved in the third party settings.
+        $form['third_party_settings']['block_attributes']['#tree'] = TRUE;
+        $form['third_party_settings']['block_attributes']['attr_class'] = array(
+            '#type' => 'textfield',
+            '#title' => t('classes'),
+            '#description' => t('Add class to the block'),
+            '#default_value' => $block->getThirdPartySetting('block_attributes', 'attr_class'),
+        );
+        $form['third_party_settings']['block_attributes']['attr_id'] = array(
+            '#type' => 'textfield',
+            '#title' => t('ID'),
+            '#description' => t('Add id to the block'),
+            '#default_value' => $block->getThirdPartySetting('block_attributes', 'attr_id'),
+        );
+		$form['third_party_settings']['block_attributes']['block_title'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Block title'),
+            '#description' => t('Add block title to one page menu'),
+            '#default_value' => $block->getThirdPartySetting('block_attributes', 'block_title'),
+        );
+		$form['third_party_settings']['block_attributes']['block_sub_title'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Block Sub Title'),
+            '#description' => t('Add block sub title'),
+            '#default_value' => $block->getThirdPartySetting('block_attributes', 'block_sub_title'),
+        );
+		$form['third_party_settings']['block_attributes']['block_desc'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Block Description'),
+            '#description' => t('Add block Description to block'),
+            '#default_value' => $block->getThirdPartySetting('block_attributes', 'block_desc'),
+        );
+		$form['third_party_settings']['block_attributes']['block_title_icon'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Class icon'),
+            '#description' => t('Add class font icon to the block title'),
+            '#default_value' => $block->getThirdPartySetting('block_attributes', 'block_title_icon'),
+        );
+        $form['third_party_settings']['ntv_block_background'] = [
+            '#type' => 'details',
+            '#title' => t('Block background settings'),
+            '#tree' => TRUE,
+            '#group' => 'advanced',
+        ];
+        // This will automatically be saved in the third party settings.
+        $form['third_party_settings']['ntv_block_background']['#tree'] = TRUE;
+
+        $form['third_party_settings']['ntv_block_background']['disable'] = array(
+            '#type' => 'select',
+            '#title' => t('Disable background'),
+            '#options' => ['disable' => 'Disable', 'enable' => 'Enable' ],
+            '#description' => t('Select disable if you want to disable the background for block'),
+            '#default_value' => $block->getThirdPartySetting('ntv_block_background', 'disable'),
+        );
+        $form['third_party_settings']['ntv_block_background']['color'] = array(
+            '#type' => 'color',
+            '#title' => t('Background color'),
+            '#description' => t('Add background color for block'),
+            '#default_value' => $block->getThirdPartySetting('ntv_block_background', 'color'),
+        );
+        if($block->getThirdPartySetting('ntv_block_background', 'bg_image')) {
+            // Thumbnail preview (optional).
+            $bg_image = $block->getThirdPartySetting('ntv_block_background', 'bg_image');
+            //$image = theme('image', $image_op);
+              $form['third_party_settings']['ntv_block_background']['thumbnail_preview'] = array(
+                '#title' => t('Background Image'),
+                '#type' => 'item',
+                '#markup' => '<img src="'.$bg_image.'" width="100px" height="auto">',
+              );
+        }
+        if (\Drupal::moduleHandler()->moduleExists('imce') && \Drupal\imce\Imce::access())
+        $form['third_party_settings']['ntv_block_background']['bg_image'] = array(
+            '#type' => 'textfield',
+            '#description' => t('Upload background image for block.'),
+            '#default_value' => $block->getThirdPartySetting('ntv_block_background', 'bg_image'),
+            '#attached' => array('library' => array('imce/drupal.imce.input')),
+            '#attributes' => array('class' => array('imce-url-input')),
+            '#required' => FALSE,
+        );
+        $form['third_party_settings']['ntv_block_background']['bg_image_type'] = array(
+            '#type' => 'select',
+            '#title' => t('Background image type'),
+            '#options' => ['default' => 'Default', 'fixed' => 'Fixed' ],
+            '#default_value' => $block->getThirdPartySetting('ntv_block_background', 'bg_image_type'),
+        );
+        $form['third_party_settings']['ntv_block_background']['bg_repeat'] = array(
+            '#type' => 'select',
+            '#title' => t('Background image repeat'),
+            '#options' => ['no' => 'No', 'yes' => 'Yes' ],
+            '#default_value' => $block->getThirdPartySetting('ntv_block_background', 'bg_repeat'),
+        );
+        $form['third_party_settings']['ntv_block_background']['bg_image_position'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Background image position'),
+            '#default_value' => $block->getThirdPartySetting('ntv_block_background', 'bg_image_position'),
+        );
+        $form['third_party_settings']['ntv_block_background']['bg_image_size'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Background image size'),
+            '#default_value' => $block->getThirdPartySetting('ntv_block_background', 'bg_image_size'),
+        );
+        $form['third_party_settings']['ntv_block_background']['background_overlay'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Background overlay'),
+            '#attributes' => array(
+                    'id' => 'bg_overlay',
+                  ),
+            '#default_value' => $block->getThirdPartySetting('ntv_block_background', 'background_overlay'),
+        );
+    }
+}
+
+function nvt_block_settings_form_submit($form, &$form_state) {
+    // $block = $form_state->getFormObject()->getEntity();
+    // if ($block->getThirdPartySetting('ntv_block_background', 'bg_image')) {
+    //     $bg_image = $block->getThirdPartySetting('ntv_block_background', 'bg_image');
+    //     $file = File::load($bg_image[0]);
+    //     exit($file);
+    //     $file_usage = \Drupal::service('file.usage');
+    //     $file_usage->add($file, 'nvt_block_settings', 'module', 1);
+    // }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function nvt_block_settings_preprocess_block(&$variables) {
+  // Blocks coming from page manager widget does not have id.
+    if (!empty($variables['elements']['#id'])) {
+        $block = Block::load($variables['elements']['#id']);
+		if ($classes = $block->getThirdPartySetting('block_attributes', 'attr_class')) {
+			$variables['attributes']['class'][] = $classes;
+		}
+		if ($id = $block->getThirdPartySetting('block_attributes', 'attr_id')) {
+			$variables['attributes']['id'] = $id;
+			$variables['block_id'] = $id;
+		}
+		if ($block_title = $block->getThirdPartySetting('block_attributes', 'block_title')) {
+			$variables['attributes']['data-title'] = $block_title;
+		}
+		if ($block_sub_title = $block->getThirdPartySetting('block_attributes', 'block_sub_title')) {
+			$variables['attributes']['data-sub-title'] = $block_sub_title;
+		}
+		if ($block_desc = $block->getThirdPartySetting('block_attributes', 'block_desc')) {
+			$variables['attributes']['data-block-desc'] = $block_desc;
+		}
+		
+		if ($class_icon = $block->getThirdPartySetting('block_attributes', 'block_title_icon')) {
+			$variables['block_title_class_icon'] = $class_icon;
+		} else $variables['block_title_class_icon'] = '';
+        if($block->getThirdPartySetting('ntv_block_background', 'disable') == 'enable') {
+            if ($bg_color = $block->getThirdPartySetting('ntv_block_background', 'color')) {
+                $variables['attributes']['data-bg-color'] = $bg_color;
+            }
+            if ($bg_image = $block->getThirdPartySetting('ntv_block_background', 'bg_image')) {
+                // $file = File::load($bg_image[0]);
+                // $url = file_create_url($file->getFileUri());
+                $variables['attributes']['data-bg-image'] = $bg_image;
+            }
+            if ($bg_image_type = $block->getThirdPartySetting('ntv_block_background', 'bg_image_type')) {
+                if($bg_image_type == 'fixed') $variables['attributes']['class'][] ='bg-fixed';
+            }
+            if ($bg_repeat = $block->getThirdPartySetting('ntv_block_background', 'bg_repeat')) {
+                if($bg_repeat == 'yes') {
+                    $variables['attributes']['class'][] ='bg-repeat';
+                } else $variables['attributes']['class'][] ='bg-no-repeat';
+            }
+            if ($bg_image_position = $block->getThirdPartySetting('ntv_block_background', 'bg_image_position')) {
+                $variables['attributes']['data-bg-position'] = $bg_image_position;
+            }
+            if ($bg_image_size = $block->getThirdPartySetting('ntv_block_background', 'bg_image_size')) {
+                $variables['attributes']['data-bg-size'] = $bg_image_size;
+            }
+            if ($bg_overlay = $block->getThirdPartySetting('ntv_block_background', 'background_overlay')) {
+                $variables['attributes']['data-bg-overlay'] = $bg_overlay;
+            }
+            if($bg_color || $bg_image) $variables['attributes']['class'][] = 'block-bg';
+            $variables['#attached']['library'][] = 'nvt_block_settings/ntv-block-libary';
+        }
+    }
+}

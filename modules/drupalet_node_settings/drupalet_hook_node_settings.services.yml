@@ -1,0 +1,6 @@
+services:
+  drupalet_hook_node_settings.twig_extension:
+    class: Drupal\drupalet_hook_node_settings\TwigExtension
+    arguments: ['@entity_type.manager', '@token', '@config.factory', '@current_route_match', '@menu.link_tree', '@menu.active_trail']
+    tags:
+      - { name: twig.extension }

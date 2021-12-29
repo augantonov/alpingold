@@ -1,0 +1,20 @@
+ntv-block-libary:
+  version: VERSION
+  css:
+    theme:
+      css/ntv_block_settings.css: {}
+  js:
+    js/ntv_block_settings.js: {}
+  dependencies:
+    - core/jquery
+ntv-block-admin:
+  css:
+    component:
+      css/spectrum.css: {}
+  js:
+    js/spectrum.js: {}
+    js/ntv_block_admin.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.ajax
+

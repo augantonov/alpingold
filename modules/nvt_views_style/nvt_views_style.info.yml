@@ -1,0 +1,7 @@
+name: NaviTeam style for views
+type: module
+description: Drupalet Custom View
+core_version_requirement: ^8.8 || ^9
+package: NaviTeam
+dependencies:
+  - views

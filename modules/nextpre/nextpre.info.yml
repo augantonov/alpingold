@@ -1,0 +1,13 @@
+name: Next And Previous Link
+type: module
+description: Next and previous link on detail page.
+core: 8.x
+core_version_requirement: ^8 || ^9
+
+dependencies:
+  - drupal:node
+
+# Information added by Drupal.org packaging script on 2020-10-12
+version: '9.0.1'
+project: 'nextpre'
+datestamp: 1602505206

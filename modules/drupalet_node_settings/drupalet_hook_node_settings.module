@@ -1,0 +1,271 @@
+<?php
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\FieldDefinition;
+use Drupal\Core\Field\BaseFieldDefinition;
+
+function drupalet_hook_node_settings_theme() {
+  return [	
+    'views_view_drpcarouselfilter' => [
+      'variables' => [],
+    ]
+  ];
+}
+
+function drupalet_hook_node_settings_makeid($length = 5){
+  $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+  $randomString = '';
+  for ($i = 0; $i < $length; $i++) {
+    $randomString .= $characters[rand(0, strlen($characters) - 1)];
+  }
+  return $randomString;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function drupalet_hook_node_settings_form_node_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id) {
+  
+
+  $form['drpn_node_settings'] = array(
+    '#type'   => 'details',
+    '#title'  => t('Node Settings'),
+    '#group'  => 'advanced',
+    '#open'   => TRUE,
+    '#access' => TRUE,
+    '#attributes' => array('class' => array('node-class-form')),
+  );
+
+  $path = \Drupal::service('path.current')->getPath();
+  $path_args = explode('/', $path);
+  $node_id = 0;
+  if (isset($path_args[1]) && isset($path_args[2]) && ($path_args[1] == 'node') && (is_numeric($path_args[2]))) {
+    $node = \Drupal\node\Entity\Node::load($path_args[2]);
+    if($node->id()){
+      $node_id = $node->id();
+    }
+  }
+
+  $form['drpn_node_class']['#group']           = 'drpn_node_settings';
+  $form['drpn_node_page_header_on_off']['#group']           = 'drpn_node_settings';
+  $form['drpn_node_page_heder_background_image']['#group']           = 'drpn_node_settings';
+  $form['drpn_node_page_header_sub_title']['#group']           = 'drpn_node_settings';
+  $form['drpn_node_page_header_menu_style']['#group']           = 'drpn_node_settings';
+  
+  $form['drpn_node_settings_1']['#group']           = 'drpn_node_settings'; //menu style 
+  $form['drpn_node_settings_2']['#group']           = 'drpn_node_settings';
+  $form['drpn_node_settings_3']['#group']           = 'drpn_node_settings';
+  $form['drpn_node_settings_4']['#group']           = 'drpn_node_settings';
+  $form['drpn_node_settings_5']['#group']           = 'drpn_node_settings';
+}
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function drupalet_hook_node_settings_entity_base_field_info(EntityTypeInterface $entity_type) {
+  if ($entity_type->id() === 'node') {
+	
+	
+	$fields['drpn_node_class'] = BaseFieldDefinition::create('list_string')
+      ->setSetting('allowed_values', [
+          'off' => 'Off',
+          'style1' => 'Style 1',
+		  'style2' => 'Style 2',
+        ])
+      ->setLabel(t('Page Header'))
+      ->setDisplayOptions('form', array(
+        'type'    => 'options_select',
+        'weight'  => 1,
+      ))
+      ->setDisplayConfigurable('form', TRUE);
+
+	/*$fields['drpn_node_page_header_menu_style'] = BaseFieldDefinition::create('list_string')
+      ->setSetting('allowed_values', [
+          '1' => 'Style 1',
+          '2' => 'Style 2'
+        ])
+      ->setLabel(t('Page Header'))
+      ->setDisplayOptions('form', array(
+        'type'    => 'options_select',
+        'weight'  => 1,
+      ))
+      ->setDisplayConfigurable('form', TRUE);
+*/
+
+	$fields['drpn_node_page_heder_background_image'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Page header background image'))
+      ->setDisplayOptions('form', array(
+        'type'    => 'string_textfield',
+        'weight'  => 7,
+      ))
+      ->setDisplayConfigurable('form', TRUE);
+	
+	  
+	
+	
+	$fields['drpn_node_page_header_sub_title'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Page header sub title'))
+      ->setDisplayOptions('form', array(
+        'type'    => 'string_textfield',
+        'weight'  => 7,
+      ))
+      ->setDisplayConfigurable('form', TRUE);
+	
+	/*****************************************************/
+    /*$fields['drpn_node_layout'] = BaseFieldDefinition::create('list_string')
+      ->setSetting('allowed_values', [
+          'fullwidth' => 'Fullwith no sidebar',
+          'left_sidebar' => 'Left Sidebar',
+          'right_sidebar' => 'Right Sidebar'
+        ])
+      ->setLabel(t('Layout settings'))
+      ->setDisplayOptions('form', array(
+        'type'    => 'options_select',
+        'weight'  => 1,
+      ))
+      ->setDisplayConfigurable('form', TRUE);
+
+
+	//On-off menu toggle
+    $fields['drpn_breadcrumb'] = BaseFieldDefinition::create('list_string')
+      ->setSetting('allowed_values', [
+          'enable'    => 'Menu Default',
+          'disable'   => 'Menu Toggle'
+        ])
+      ->setLabel(t('Header Menu Style'))
+      ->setDisplayOptions('form', array(
+        'type'    => 'options_select',
+        'weight'  => 2,
+      ))
+      ->setDisplayConfigurable('form', TRUE);  
+
+    $fields['drpn_header_sticky'] = BaseFieldDefinition::create('list_string')
+      ->setSetting('allowed_values', [
+			'nosticky' => t('Disable'),
+			'sticky' => t('Header Menu Sticky'),
+			'sticky-autohide' => t('Header Menu Sticky Autohide'),
+              ])
+      ->setLabel(t('Header Style Sticky'))
+      ->setDisplayOptions('form', array(
+        'type'    => 'options_select',
+        'weight'  => 3,
+      ))
+      ->setDisplayConfigurable('form', TRUE);
+		
+		$fields['drpn_header_menu_align'] = BaseFieldDefinition::create('list_string')
+      ->setSetting('allowed_values', [
+			'right' => t('Right'),
+			  'center' => t('Center'),
+			  'left' => t('Left'),
+              ])
+      ->setLabel(t('Header Menu Align'))
+      ->setDisplayOptions('form', array(
+        'type'    => 'options_select',
+        'weight'  => 4,
+      ))
+      ->setDisplayConfigurable('form', TRUE);
+
+	$fields['drpn_default_header_dark_black'] = BaseFieldDefinition::create('list_string')
+      ->setSetting('allowed_values', [
+			'dark' => t('Header Dark'),
+	  		'light' => t('Header Light'),
+      ])
+      ->setLabel(t('Header Dark Or Black'))
+      ->setDisplayOptions('form', array(
+        'type'    => 'options_select',
+        'weight'  => 5,
+      ))
+      ->setDisplayConfigurable('form', TRUE);
+	
+	$fields['drpn_default_header_absolute'] = BaseFieldDefinition::create('list_string')
+      ->setSetting('allowed_values', [
+			'absolute-dark' => t('Header Absolute Dark'),
+	  		'absolute-light' => t('Header Absolutes Light'),
+      ])
+      ->setLabel(t('Header Absolute'))
+      ->setDisplayOptions('form', array(
+        'type'    => 'options_select',
+        'weight'  => 6,
+      ))
+      ->setDisplayConfigurable('form', TRUE);
+	*/
+    
+
+   
+    
+    return $fields;
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function drupalet_hook_node_settings_preprocess_html(&$variables) {
+  $path = \Drupal::service('path.current')->getPath();
+  $path_args = explode('/', $path);
+  if (isset($path_args[1]) && isset($path_args[2]) && ($path_args[1] == 'node') && (is_numeric($path_args[2]))) {
+    $node = \Drupal\node\Entity\Node::load($path_args[2]);
+    if($node && $node->hasField('drpn_node_class')){
+      $class_body = $node->get('drpn_node_class')->getValue();
+      if(isset($class_body) && !empty($class_body[0])) {
+          $variables['attributes']['class'][] = $class_body[0]['value'];
+      }
+    }
+	if($node && $node->hasField('drpn_node_page_header_on_off')){
+      $header_sticky = $node->get('drpn_node_page_header_on_off')->getValue();
+      if(isset($header_sticky) && !empty($drpn_node_page_header_on_off[0])) {
+          $variables['attributes']['drpn_node_page_header_on_off'][] = $drpn_node_page_header_on_off[0]['value'];
+      }
+    }
+    if($node && $node->hasField('drpn_box_layout')){
+      $box_layout = $node->get('drpn_box_layout')->getValue();
+      if(isset($box_layout) && !empty($box_layout[0])) {
+          $variables['attributes']['class'][] = $box_layout[0]['value'];
+      }
+    }
+  }
+}
+
+function drupalet_hook_node_settings_preprocess_page(&$variables) {
+  $path = \Drupal::service('path.current')->getPath();
+  $path_args = explode('/', $path);
+  if ($node = \Drupal::request()->attributes->get('node')) {
+      if(is_object($node)){
+      $variables['drpn_header'] = '';
+      if($node){
+        
+        if($node->hasField('drpn_header')){
+          $drpn_header = $node->get('drpn_header')->value;
+          if($drpn_header) {
+            $variables['drpn_header'] = $drpn_header;
+          }
+        }
+
+        if($node->hasField('drpn_breadcrumb')){
+          $drpn_breadcrumb = $node->get('drpn_breadcrumb')->value;
+          if($drpn_breadcrumb && $drpn_breadcrumb == 'disable'){
+            if(isset($variables['page']['breadcrumbs'])) unset($variables['page']['breadcrumbs']);
+          }
+        }
+		
+		if($node->hasField('drpn_header_sticky')){
+          $drpn_header_sticky = $node->get('drpn_header_sticky')->value;
+          
+		  if($drpn_header_sticky && $drpn_header_sticky == 'nosticky'){
+            if(isset($variables['page']['drpn_header_sticky'])) unset($variables['page']['drpn_header_sticky']);
+          }
+        }
+		
+		
+      }  
+    }
+  }
+}
+
+
+
+
+function drupalet_hook_node_settings_update_projects_alter(&$projects){
+  unset($projects['drupalet_hook_node_settings']);
+}
+

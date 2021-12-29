@@ -1,0 +1,151 @@
+<?php
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Render\Element\RenderElement;
+use Drupal\Core\Form\FormState;
+
+function template_preprocess_views_view_naviviews(&$variables) {
+ 	// View options set by user.
+    $handler  = $variables['view']->style_plugin;
+	$element = $handler->options['element'];
+	$wrapper_element = $handler->options['wrapper_element'];
+	if(!empty($wrapper_element)) {
+		$variables['wrapper_element'] = $wrapper_element;
+	} else $variables['wrapper_element'] = 'div';
+	// Fetch classes from handler options.
+  	// if ($handler->options['first_class']) {
+   //  	$class = explode(' ', $handler->options['first_class']);
+   //  	$class = array_map('\Drupal\Component\Utility\Html::cleanCssIdentifier', $class);
+
+   //  	// Initialize a new attribute class for $class.
+   //  	$variables['attributes'] = new Attribute(array('class' => $class));
+  	// }
+	
+  	if ($handler->options['wrapper_class'] || $handler->options['wrapper_id']) {
+		//Multi Attributes
+		$attr_name1 = $handler->options['wrapper_attr_name1'];
+		$attr_value1 = $handler->options['wrapper_attr_value1'];
+		
+		$attr_name2 = $handler->options['wrapper_attr_name2'];
+		$attr_value2 = $handler->options['wrapper_attr_value2'];
+		$attr_name3 = $handler->options['wrapper_attr_name3'];
+		$attr_value3 = $handler->options['wrapper_attr_value3'];
+		$attr_name4 = $handler->options['wrapper_attr_name4'];
+		$attr_value4 = $handler->options['wrapper_attr_value4'];
+		$attr_name5 = $handler->options['wrapper_attr_name5'];
+		$attr_value5 = $handler->options['wrapper_attr_value5'];
+		$attr_name6 = $handler->options['wrapper_attr_name6'];
+		$attr_value6 = $handler->options['wrapper_attr_value6'];
+		$attr_name7 = $handler->options['wrapper_attr_name7'];
+		$attr_value7 = $handler->options['wrapper_attr_value7'];
+		$attr_name8 = $handler->options['wrapper_attr_name8'];
+		$attr_value8 = $handler->options['wrapper_attr_value8'];
+		$attr_name9 = $handler->options['wrapper_attr_name9'];
+		$attr_value9 = $handler->options['wrapper_attr_value9'];
+		$attr_name10 = $handler->options['wrapper_attr_name10'];
+		$attr_value10 = $handler->options['wrapper_attr_value10'];
+		
+		
+		
+		
+		$variables['wrapper_attributes'] = new Attribute(array($attr_name => $attr_value));
+		
+  		if($handler->options['wrapper_class'] && empty($handler->options['wrapper_id'])) {
+  			$class = explode(' ', $handler->options['wrapper_class']);
+    		$class = array_map('\Drupal\Component\Utility\Html::cleanCssIdentifier', $class);
+			$art_a = array('class' => $class, 
+				$attr_name1 => $attr_value1, 
+				$attr_name2 => $attr_value2,
+				$attr_name3 => $attr_value3,
+				$attr_name4 => $attr_value4,
+				$attr_name5 => $attr_value5,
+				$attr_name6 => $attr_value6,
+				$attr_name7 => $attr_value7,
+				$attr_name8 => $attr_value8,
+				$attr_name9 => $attr_value9,
+				$attr_name10 => $attr_value10,
+				
+				
+			);
+    		$variables['wrapper_attributes'] = new Attribute($art_a);
+  		} elseif ($handler->options['wrapper_class'] && $handler->options['wrapper_id']) {
+  			$class = explode(' ', $handler->options['wrapper_class']);
+    		$class = array_map('\Drupal\Component\Utility\Html::cleanCssIdentifier', $class);
+			$art_a = array(
+				'class' => $class, 
+				'id' => $id,
+				$attr_name1 => $attr_value1, 
+				$attr_name2 => $attr_value2,
+				$attr_name3 => $attr_value3,
+				$attr_name4 => $attr_value4,
+				$attr_name5 => $attr_value5,
+				$attr_name6 => $attr_value6,
+				$attr_name7 => $attr_value7,
+				$attr_name8 => $attr_value8,
+				$attr_name9 => $attr_value9,
+				$attr_name10 => $attr_value10,
+				
+				
+			);
+    		$id = $handler->options['wrapper_id'];
+    		$variables['wrapper_attributes'] = new Attribute($art_a);
+  		} elseif(empty($handler->options['wrapper_class']) && $handler->options['wrapper_id']) {
+  			$id = $handler->options['wrapper_id'];
+			$art_a = array('id' => $id, 
+				$attr_name1 => $attr_value1, 
+				$attr_name2 => $attr_value2,
+				$attr_name3 => $attr_value3,
+				$attr_name4 => $attr_value4,
+				$attr_name5 => $attr_value5,
+				$attr_name6 => $attr_value6,
+				$attr_name7 => $attr_value7,
+				$attr_name8 => $attr_value8,
+				$attr_name9 => $attr_value9,
+				$attr_name10 => $attr_value10,
+				
+				
+			);
+    		$variables['wrapper_attributes'] = new Attribute($art_a);
+  		}
+  	}
+  	$rows = $variables['rows'];
+  	$max = count($rows);
+  	if($handler->options['class_attribute'] && $max > 0 && $element) {
+  		$class_attribute = $handler->options['class_attribute'];
+  		$first_class = $handler->options['first_class'];
+        if(!empty($first_class)) $first_class = ' '.$first_class;
+		$last_class = $handler->options['last_class'];
+        if(!empty($last_class)) $last_class = ' '.$last_class;
+		$last_every_nth = (int)$handler->options['last_every_nth'];
+		$row_first_class = $class_attribute.$first_class;
+		$row_last_class = $class_attribute.$last_class;
+		$data_att_name = $handler->options['data_att_name'];
+		$data_att_value = $handler->options['data_att_value'];
+		if(!empty($data_att_value)) {
+			$data_att = ' data-'.$data_att_name.'="'.$data_att_value.'"';
+		} else $data_att = '';
+		$count = 0;
+		//$classes = array();
+		$n =  $max - 1;
+		$navi_rows = '';
+  		foreach ($rows as $id => $row) {
+  			if($last_every_nth == 0 || empty($last_every_nth)) {
+  				if($count == 0) {
+  					$navi_rows .= '<'.$element.' class="'.$row_first_class.'"'.$data_att.'>'.drupal_render($row).'</'.$element.'>';
+  				} elseif ($count == $n) {
+  					$navi_rows .= '<'.$element.' class="'.$row_last_class.'"'.$data_att.'>'.drupal_render($row).'</'.$element.'>';
+  				} else $navi_rows .= '<'.$element.' class="'.$class_attribute.'"'.$data_att.'>'.drupal_render($row).'</'.$element.'>';
+  			} elseif($last_every_nth == 1) {
+  				$navi_rows .= '<'.$element.' class="'.$class_attribute.' '.$first_class.' '.$last_class.'"'.$data_att.'>'.drupal_render($row).'</'.$element.'>';
+  			} else {
+  				if($count == 0 || ($count % $last_every_nth) == 0 && $count > 1) {
+  					$navi_rows .= '<'.$element.' class="'.$row_first_class.'"'.$data_att.'>'.drupal_render($row).'</'.$element.'>';
+  				} elseif(($count + 1) % $last_every_nth == 0) {
+  					$navi_rows .= '<'.$element.' class="'.$row_last_class.'"'.$data_att.'>'.drupal_render($row).'</'.$element.'>';
+  				} else $navi_rows .= '<'.$element.' class="'.$class_attribute.'"'.$data_att.'>'.drupal_render($row).'</'.$element.'>';
+  			}
+  			$count++;
+  		}
+  		$variables['navi_rows'] = $navi_rows;
+  	} else $variables['navi_rows'] = $rows;
+}
