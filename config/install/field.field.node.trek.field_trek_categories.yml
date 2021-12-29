@@ -1,0 +1,33 @@
+uuid: 7c00024b-67e8-4a9a-b0a9-4bba82e069c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_trek_categories
+    - node.type.trek
+    - taxonomy.vocabulary.trek_categories
+  content:
+    - 'taxonomy_term:trek_categories:efe31e9a-5770-4c69-93f1-ec46180b0379'
+id: node.trek.field_trek_categories
+field_name: field_trek_categories
+entity_type: node
+bundle: trek
+label: 'Trek Categories'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: efe31e9a-5770-4c69-93f1-ec46180b0379
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      trek_categories: trek_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

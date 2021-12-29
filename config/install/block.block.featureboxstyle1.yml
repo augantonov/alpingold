@@ -1,0 +1,51 @@
+uuid: f37bf3e9-efbb-42e2-9f3c-b188653ea62f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.food
+  content:
+    - 'block_content:basic:c5b1b685-0eb8-47f1-be34-a5042e1b074d'
+  module:
+    - block_attributes
+    - block_content
+    - block_visibility_groups
+    - ntv_block_background
+  theme:
+    - drupalet_alpins
+third_party_settings:
+  block_attributes:
+    attr_class: section-bottom-box
+    attr_id: ''
+    block_title: ''
+    block_sub_title: ''
+    block_desc: ''
+    block_title_icon: ''
+  ntv_block_background:
+    disable: disable
+    color: '#000000'
+    bg_image: ''
+    bg_image_type: default
+    bg_repeat: 'no'
+    bg_image_position: ''
+    bg_image_size: ''
+    background_overlay: ''
+id: featureboxstyle1
+theme: drupalet_alpins
+region: content
+weight: -23
+provider: null
+plugin: 'block_content:c5b1b685-0eb8-47f1-be34-a5042e1b074d'
+settings:
+  id: 'block_content:c5b1b685-0eb8-47f1-be34-a5042e1b074d'
+  label: 'Feature box - style 1'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: food

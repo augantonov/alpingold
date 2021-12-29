@@ -1,0 +1,17 @@
+uuid: a0207521-d1d2-46af-8182-b6f4b6fe1bc3
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Icon box'
+type: icon_box
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,22 @@
+uuid: 23b6937a-6c05-41ce-be53-2edab2128c1b
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - drupalet_alpins
+_core:
+  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
+id: drupalet_alpins_help
+theme: drupalet_alpins
+region: content
+weight: -27
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

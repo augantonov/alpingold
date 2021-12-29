@@ -1,0 +1,7 @@
+uuid: 50bb3ca2-714e-4104-b743-ad6a368ad95c
+langcode: en
+status: true
+dependencies: {  }
+name: image_800x500
+label: 'Image 800x500'
+effects: {  }

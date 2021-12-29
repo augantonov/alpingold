@@ -1,0 +1,17 @@
+uuid: 15963599-6f7e-4a95-a2cb-2c87626fd9c6
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+id: food
+label: Food
+logic: and
+conditions:
+  5fdab0c7-6ec0-4d64-a383-e890b2b61c88:
+    id: request_path
+    pages: /food
+    negate: false
+    context_mapping: {  }
+    uuid: 5fdab0c7-6ec0-4d64-a383-e890b2b61c88
+allow_other_conditions: false

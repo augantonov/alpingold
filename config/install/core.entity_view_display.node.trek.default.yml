@@ -1,0 +1,126 @@
+uuid: bf7675e6-72cf-4e7e-ae8e-fccfe722ec5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.trek.body
+    - field.field.node.trek.field_content_section_1
+    - field.field.node.trek.field_content_section_2
+    - field.field.node.trek.field_content_section_3
+    - field.field.node.trek.field_data_trek
+    - field.field.node.trek.field_distance
+    - field.field.node.trek.field_duration
+    - field.field.node.trek.field_google_map
+    - field.field.node.trek.field_group_size
+    - field.field.node.trek.field_image
+    - field.field.node.trek.field_price
+    - field.field.node.trek.field_trek_categories
+    - node.type.trek
+  module:
+    - image
+    - text
+    - user
+id: node.trek.default
+targetEntityType: node
+bundle: trek
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_content_section_1:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_content_section_2:
+    weight: 108
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_content_section_3:
+    weight: 110
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_data_trek:
+    weight: 104
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_distance:
+    weight: 105
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_duration:
+    weight: 107
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_google_map:
+    weight: 109
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_group_size:
+    weight: 106
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_image:
+    weight: 102
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_price:
+    weight: 111
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_trek_categories:
+    weight: 112
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

@@ -1,0 +1,8 @@
+uuid: 6a08a2f9-0561-48c2-8d57-318a745f2070
+langcode: en
+status: true
+dependencies: {  }
+name: 'Trek Categories'
+vid: trek_categories
+description: ''
+weight: 0

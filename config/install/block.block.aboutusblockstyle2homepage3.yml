@@ -1,0 +1,51 @@
+uuid: dafbac9e-9a90-410a-b276-30913975b19d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.home_page_3
+  content:
+    - 'block_content:basic:46a999a1-66f6-45c4-a630-a2fa641a376e'
+  module:
+    - block_attributes
+    - block_content
+    - block_visibility_groups
+    - ntv_block_background
+  theme:
+    - drupalet_alpins
+third_party_settings:
+  block_attributes:
+    attr_class: ''
+    attr_id: ''
+    block_title: ''
+    block_sub_title: ''
+    block_desc: ''
+    block_title_icon: ''
+  ntv_block_background:
+    disable: disable
+    color: '#000000'
+    bg_image: ''
+    bg_image_type: default
+    bg_repeat: 'no'
+    bg_image_position: ''
+    bg_image_size: ''
+    background_overlay: ''
+id: aboutusblockstyle2homepage3
+theme: drupalet_alpins
+region: content
+weight: -25
+provider: null
+plugin: 'block_content:46a999a1-66f6-45c4-a630-a2fa641a376e'
+settings:
+  id: 'block_content:46a999a1-66f6-45c4-a630-a2fa641a376e'
+  label: 'ABOUT US - block style 2 - home page 3'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: home_page_3

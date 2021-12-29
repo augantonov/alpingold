@@ -1,0 +1,17 @@
+uuid: 3cdfca9c-5ab8-4d69-8d7a-f413a6535a60
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+id: prices
+label: Prices
+logic: and
+conditions:
+  c395df97-cdf3-425a-b373-21d92f62f479:
+    id: request_path
+    pages: /prices
+    negate: false
+    context_mapping: {  }
+    uuid: c395df97-cdf3-425a-b373-21d92f62f479
+allow_other_conditions: false

@@ -1,0 +1,50 @@
+uuid: 3663e009-800a-4334-9e9f-a213c3762be9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.home_page_1
+  content:
+    - 'block_content:basic:3989f11d-d3c7-4d2f-8276-1e725246a252'
+  module:
+    - block_attributes
+    - block_content
+    - block_visibility_groups
+    - ntv_block_background
+  theme:
+    - drupalet_alpins
+third_party_settings:
+  block_attributes:
+    attr_class: 'section-color align-left-md'
+    attr_id: ''
+    block_title: 'ABOUT US'
+    block_sub_title: 'We live for the nature'
+    block_desc: ''
+    block_title_icon: ''
+  ntv_block_background:
+    disable: disable
+    color: '#000000'
+    bg_image_type: default
+    bg_repeat: 'no'
+    bg_image_position: ''
+    bg_image_size: ''
+    background_overlay: ''
+id: blockaboutusstyle1
+theme: drupalet_alpins
+region: content
+weight: -5
+provider: null
+plugin: 'block_content:3989f11d-d3c7-4d2f-8276-1e725246a252'
+settings:
+  id: 'block_content:3989f11d-d3c7-4d2f-8276-1e725246a252'
+  label: 'ABOUT US'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: home_page_1

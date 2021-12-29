@@ -1,0 +1,51 @@
+uuid: c5316097-07e8-465c-92b4-fb45d4b3a299
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.home_page_3
+  content:
+    - 'block_content:basic:1b731b26-25e4-48c1-867c-9ece362a42fe'
+  module:
+    - block_attributes
+    - block_content
+    - block_visibility_groups
+    - ntv_block_background
+  theme:
+    - drupalet_alpins
+third_party_settings:
+  block_attributes:
+    attr_class: 'section-image light'
+    attr_id: ''
+    block_title: ''
+    block_sub_title: ''
+    block_desc: ''
+    block_title_icon: ''
+  ntv_block_background:
+    disable: enable
+    color: '#000000'
+    bg_image: /demo/sites/default/files/background/hd-1.jpg
+    bg_image_type: fixed
+    bg_repeat: 'yes'
+    bg_image_position: 'center center'
+    bg_image_size: cover
+    background_overlay: ''
+id: topexperiencesstyle2homepage3
+theme: drupalet_alpins
+region: content
+weight: -17
+provider: null
+plugin: 'block_content:1b731b26-25e4-48c1-867c-9ece362a42fe'
+settings:
+  id: 'block_content:1b731b26-25e4-48c1-867c-9ece362a42fe'
+  label: 'TOP EXPERIENCES - style 2 - home page 3'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: home_page_3

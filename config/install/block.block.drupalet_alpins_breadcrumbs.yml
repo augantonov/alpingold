@@ -1,0 +1,22 @@
+uuid: 6597e0ec-5320-4a3d-8102-62f999ce28be
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - drupalet_alpins
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: drupalet_alpins_breadcrumbs
+theme: drupalet_alpins
+region: other
+weight: -7
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

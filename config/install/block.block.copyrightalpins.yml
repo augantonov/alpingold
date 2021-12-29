@@ -1,0 +1,58 @@
+uuid: 01bcfbaf-0557-4378-8072-22ac12534745
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:21d8a949-2e7b-49af-b456-97eb53b89b27'
+  module:
+    - block_attributes
+    - block_content
+    - block_visibility_conditions
+    - block_visibility_groups
+    - ntv_block_background
+  theme:
+    - drupalet_alpins
+third_party_settings:
+  block_attributes:
+    attr_class: ''
+    attr_id: ''
+    block_title: ''
+    block_sub_title: ''
+    block_desc: ''
+    block_title_icon: ''
+  ntv_block_background:
+    disable: disable
+    color: '#000000'
+    bg_image: ''
+    bg_image_type: default
+    bg_repeat: 'no'
+    bg_image_position: ''
+    bg_image_size: ''
+    background_overlay: ''
+id: copyrightalpins
+theme: drupalet_alpins
+region: footer_left
+weight: 0
+provider: null
+plugin: 'block_content:21d8a949-2e7b-49af-b456-97eb53b89b27'
+settings:
+  id: 'block_content:21d8a949-2e7b-49af-b456-97eb53b89b27'
+  label: 'Copyright Alpins'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  not_node_type:
+    id: not_node_type
+    bundles: {  }
+    negate: null
+  not_taxonomy_vocabulary:
+    id: not_taxonomy_vocabulary
+    bundles: {  }
+    negate: null
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

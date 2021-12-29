@@ -1,0 +1,21 @@
+uuid: 634e06f5-ac81-4e0b-9eb5-0dd7f5cf9cd9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_section_2
+    - node.type.trek
+  module:
+    - text
+id: node.trek.field_content_section_2
+field_name: field_content_section_2
+entity_type: node
+bundle: trek
+label: 'Content Section 2'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

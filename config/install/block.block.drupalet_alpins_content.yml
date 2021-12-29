@@ -1,0 +1,22 @@
+uuid: 9d952f8e-a98c-46d2-b10c-02984930a4bc
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - drupalet_alpins
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: drupalet_alpins_content
+theme: drupalet_alpins
+region: content
+weight: 9
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,3 +1,4 @@
+uuid: 8a1fb56a-b519-4f99-8f88-e447e45e6931
 langcode: en
 status: true
 dependencies:
@@ -7,6 +8,8 @@ dependencies:
   module:
     - image
     - user
+_core:
+  default_config_hash: K-1rBM8mTIkFp9RqOC2tMRUukOQ1xbRCfSKK8dEddnA
 id: user.user.default
 targetEntityType: user
 bundle: user
@@ -26,11 +29,10 @@ content:
     region: content
   user_picture:
     type: image_image
-    weight: -1
-    region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-hidden:
-  langcode: true
+    weight: -1
+    region: content
+hidden: {  }

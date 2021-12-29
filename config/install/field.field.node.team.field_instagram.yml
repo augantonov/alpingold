@@ -1,0 +1,21 @@
+uuid: 9fd01754-8ef8-42e8-b23c-c6687af47d7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_instagram
+    - node.type.team
+id: node.team.field_instagram
+field_name: field_instagram
+entity_type: node
+bundle: team
+label: Instagram
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: '#'
+default_value_callback: ''
+settings: {  }
+field_type: string

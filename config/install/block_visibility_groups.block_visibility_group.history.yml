@@ -1,0 +1,17 @@
+uuid: 5b8b139e-949c-4c85-9644-1f4aa7bb06ef
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+id: history
+label: History
+logic: and
+conditions:
+  d3203fd8-be9f-4230-a57c-15a6d7ab5e59:
+    id: request_path
+    pages: /history
+    negate: false
+    context_mapping: {  }
+    uuid: d3203fd8-be9f-4230-a57c-15a6d7ab5e59
+allow_other_conditions: false

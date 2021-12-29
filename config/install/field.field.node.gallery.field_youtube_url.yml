@@ -1,0 +1,21 @@
+uuid: 29d07863-a2bb-4c2d-b13f-9492f584846f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_youtube_url
+    - node.type.gallery
+id: node.gallery.field_youtube_url
+field_name: field_youtube_url
+entity_type: node
+bundle: gallery
+label: 'Youtube URL'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'https://www.youtube.com/watch?v=Lb4IcGF5iTQ'
+default_value_callback: ''
+settings: {  }
+field_type: string

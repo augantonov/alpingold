@@ -1,0 +1,23 @@
+uuid: df3eb345-9954-485c-b416-36c21015e0ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_menu_styles
+    - node.type.page
+  module:
+    - options
+id: node.page.field_menu_styles
+field_name: field_menu_styles
+entity_type: node
+bundle: page
+label: 'Menu Styles'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: '1'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

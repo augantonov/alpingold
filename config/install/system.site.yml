@@ -1,12 +1,15 @@
-langcode: en
-uuid: ''
-name: ''
-mail: ''
+uuid: 1e11df62-2f93-4f93-882c-b37ed7cb82f1
+name: 'Alpins - Mountain And Hiking Drupal 9 Theme'
+mail: drupalet022@gmail.com
 slogan: ''
 page:
   403: ''
-  404: ''
-  front: /node
+  404: /node/81
+  front: /node/5
 admin_compact_mode: false
 weight_select_max: 100
+langcode: en
 default_langcode: en
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
+mail_notification: ''

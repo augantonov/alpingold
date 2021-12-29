@@ -1,0 +1,12 @@
+uuid: 8487c84f-79e4-40c1-9db0-871b3837cdcb
+langcode: en
+status: true
+dependencies:
+  module:
+    - simplenews
+_core:
+  default_config_hash: 3Ly1xMx90SxhhhBmZjDhcBCQ4kyR4u7tS5vLgA84B2M
+id: simplenews_subscriber.account
+label: Account
+targetEntityType: simplenews_subscriber
+cache: true

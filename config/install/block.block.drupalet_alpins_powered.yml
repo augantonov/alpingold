@@ -1,0 +1,22 @@
+uuid: 4b162e06-3456-4ef7-b6ab-c63fe7b4315d
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - drupalet_alpins
+_core:
+  default_config_hash: jQQUUWN2Uxr5qZtc9zcJKBCxpKY8orN1u2HPqYYRQDI
+id: drupalet_alpins_powered
+theme: drupalet_alpins
+region: footer_right
+weight: -6
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

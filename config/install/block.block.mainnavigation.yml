@@ -1,0 +1,57 @@
+uuid: a0edb91c-36c9-46da-986d-b0ecce2a5b09
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - block_attributes
+    - block_visibility_conditions
+    - block_visibility_groups
+    - ntv_block_background
+    - system
+  theme:
+    - drupalet_alpins
+third_party_settings:
+  block_attributes:
+    attr_class: ''
+    attr_id: ''
+    block_title: ''
+    block_sub_title: ''
+    block_desc: ''
+    block_title_icon: ''
+  ntv_block_background:
+    disable: disable
+    color: '#000000'
+    bg_image_type: default
+    bg_repeat: 'no'
+    bg_image_position: ''
+    bg_image_size: ''
+    background_overlay: ''
+id: mainnavigation
+theme: drupalet_alpins
+region: main_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  not_node_type:
+    id: not_node_type
+    bundles: {  }
+    negate: null
+  not_taxonomy_vocabulary:
+    id: not_taxonomy_vocabulary
+    bundles: {  }
+    negate: null
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

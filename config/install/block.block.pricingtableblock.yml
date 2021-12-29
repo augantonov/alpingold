@@ -1,0 +1,51 @@
+uuid: b67f0597-6742-4697-b42c-f167264dffae
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.prices
+  content:
+    - 'block_content:basic:5378db2e-0e04-4b72-b7d8-5ae8cb2f2ab6'
+  module:
+    - block_attributes
+    - block_content
+    - block_visibility_groups
+    - ntv_block_background
+  theme:
+    - drupalet_alpins
+third_party_settings:
+  block_attributes:
+    attr_class: section-base
+    attr_id: ''
+    block_title: ''
+    block_sub_title: ''
+    block_desc: ''
+    block_title_icon: ''
+  ntv_block_background:
+    disable: disable
+    color: '#000000'
+    bg_image: ''
+    bg_image_type: default
+    bg_repeat: 'no'
+    bg_image_position: ''
+    bg_image_size: ''
+    background_overlay: ''
+id: pricingtableblock
+theme: drupalet_alpins
+region: content
+weight: -18
+provider: null
+plugin: 'block_content:5378db2e-0e04-4b72-b7d8-5ae8cb2f2ab6'
+settings:
+  id: 'block_content:5378db2e-0e04-4b72-b7d8-5ae8cb2f2ab6'
+  label: 'Pricing table block'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: prices

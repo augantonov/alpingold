@@ -1,0 +1,54 @@
+uuid: 758924be-9446-42ad-8ebb-87d27da62270
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_attributes
+    - block_visibility_conditions
+    - block_visibility_groups
+    - ntv_block_background
+    - search
+  theme:
+    - drupalet_alpins
+third_party_settings:
+  block_attributes:
+    attr_class: search-form-sidebar
+    attr_id: ''
+    block_title: ''
+    block_sub_title: ''
+    block_desc: ''
+    block_title_icon: ''
+  ntv_block_background:
+    disable: disable
+    color: '#000000'
+    bg_image: ''
+    bg_image_type: default
+    bg_repeat: 'no'
+    bg_image_position: ''
+    bg_image_size: ''
+    background_overlay: ''
+id: searchform_2
+theme: drupalet_alpins
+region: sidebar_left
+weight: -32
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form'
+  provider: search
+  label_display: visible
+  page_id: ''
+visibility:
+  not_node_type:
+    id: not_node_type
+    bundles: {  }
+    negate: null
+  not_taxonomy_vocabulary:
+    id: not_taxonomy_vocabulary
+    bundles: {  }
+    negate: null
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

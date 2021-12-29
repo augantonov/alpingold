@@ -1,0 +1,21 @@
+uuid: bfdbabfe-6fa6-418b-9aa4-cd6523df9a12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_section_3
+    - node.type.trek
+  module:
+    - text
+id: node.trek.field_content_section_3
+field_name: field_content_section_3
+entity_type: node
+bundle: trek
+label: 'Content Section 3'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

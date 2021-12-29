@@ -1,0 +1,57 @@
+uuid: a9b83fb5-2258-4bc2-b3ed-d371cbfa5042
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.list_taxonomy
+  module:
+    - block_attributes
+    - block_visibility_conditions
+    - block_visibility_groups
+    - ntv_block_background
+    - views
+  theme:
+    - drupalet_alpins
+third_party_settings:
+  block_attributes:
+    attr_class: 'menu-inner menu-inner-vertical'
+    attr_id: ''
+    block_title: ''
+    block_sub_title: ''
+    block_desc: ''
+    block_title_icon: ''
+  ntv_block_background:
+    disable: disable
+    color: '#000000'
+    bg_image: ''
+    bg_image_type: default
+    bg_repeat: 'no'
+    bg_image_position: ''
+    bg_image_size: ''
+    background_overlay: ''
+id: views_block__block_list_blog_taxonomy
+theme: drupalet_alpins
+region: sidebar_right
+weight: -28
+provider: null
+plugin: 'views_block:list_taxonomy-block_list_blog_taxonomy'
+settings:
+  id: 'views_block:list_taxonomy-block_list_blog_taxonomy'
+  label: Categories
+  provider: views
+  label_display: visible
+  views_label: Categories
+  items_per_page: none
+visibility:
+  not_node_type:
+    id: not_node_type
+    bundles: {  }
+    negate: null
+  not_taxonomy_vocabulary:
+    id: not_taxonomy_vocabulary
+    bundles: {  }
+    negate: null
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

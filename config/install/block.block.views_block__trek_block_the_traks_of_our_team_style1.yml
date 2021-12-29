@@ -1,0 +1,48 @@
+uuid: 1f645ac0-091c-4905-88c9-cf8d05d027e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.home_page_1
+    - views.view.trek
+  module:
+    - block_attributes
+    - block_visibility_groups
+    - ntv_block_background
+    - views
+  theme:
+    - drupalet_alpins
+third_party_settings:
+  block_attributes:
+    attr_class: 'section-slider alpins-slider light section-full-width-left'
+    attr_id: ''
+    block_title: ''
+    block_sub_title: ''
+    block_desc: ''
+    block_title_icon: ''
+  ntv_block_background:
+    disable: enable
+    color: '#000000'
+    bg_image_type: fixed
+    bg_repeat: 'yes'
+    bg_image_position: 'center center'
+    bg_image_size: cover
+    background_overlay: ''
+id: views_block__trek_block_the_traks_of_our_team_style1
+theme: drupalet_alpins
+region: content
+weight: -3
+provider: null
+plugin: 'views_block:trek-block_the_traks_of_our_team_style1'
+settings:
+  id: 'views_block:trek-block_the_traks_of_our_team_style1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: home_page_1

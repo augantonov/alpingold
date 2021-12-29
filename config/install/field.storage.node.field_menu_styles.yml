@@ -1,0 +1,27 @@
+uuid: 1fcc4461-cb76-49de-a66b-b1189b42352d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_menu_styles
+field_name: field_menu_styles
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '1'
+      label: 'Style 1'
+    -
+      value: '2'
+      label: 'Style 2'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

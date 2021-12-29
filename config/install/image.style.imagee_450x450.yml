@@ -1,0 +1,15 @@
+uuid: d016851e-58cb-4dee-82d7-396909c4edfd
+langcode: en
+status: true
+dependencies: {  }
+name: imagee_450x450
+label: 'Imagee 450x450'
+effects:
+  eb571d12-80a5-4e5a-8fb1-f7d9d1722d9a:
+    uuid: eb571d12-80a5-4e5a-8fb1-f7d9d1722d9a
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 450
+      height: 450
+      anchor: center-center

@@ -1,0 +1,58 @@
+uuid: 5ec2794d-a68e-4404-b7b8-250437459cb6
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:ca9da6cc-562b-4d75-a1fb-9bd264e73517'
+  module:
+    - block_attributes
+    - block_content
+    - block_visibility_conditions
+    - block_visibility_groups
+    - ntv_block_background
+  theme:
+    - drupalet_alpins
+third_party_settings:
+  block_attributes:
+    attr_class: ''
+    attr_id: ''
+    block_title: ''
+    block_sub_title: ''
+    block_desc: ''
+    block_title_icon: ''
+  ntv_block_background:
+    disable: disable
+    color: '#000000'
+    bg_image: ''
+    bg_image_type: default
+    bg_repeat: 'no'
+    bg_image_position: ''
+    bg_image_size: ''
+    background_overlay: ''
+id: footerthird
+theme: drupalet_alpins
+region: footer_third
+weight: 0
+provider: null
+plugin: 'block_content:ca9da6cc-562b-4d75-a1fb-9bd264e73517'
+settings:
+  id: 'block_content:ca9da6cc-562b-4d75-a1fb-9bd264e73517'
+  label: 'Footer third'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  not_node_type:
+    id: not_node_type
+    bundles: {  }
+    negate: null
+  not_taxonomy_vocabulary:
+    id: not_taxonomy_vocabulary
+    bundles: {  }
+    negate: null
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

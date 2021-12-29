@@ -1,0 +1,51 @@
+uuid: a6f5f06b-0c60-4b24-9d43-0cef468882ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.page_trek
+  content:
+    - 'block_content:basic:82c02057-7345-4263-b430-f445d4f5e7a3'
+  module:
+    - block_attributes
+    - block_content
+    - block_visibility_groups
+    - ntv_block_background
+  theme:
+    - drupalet_alpins
+third_party_settings:
+  block_attributes:
+    attr_class: section-call
+    attr_id: ''
+    block_title: ''
+    block_sub_title: ''
+    block_desc: ''
+    block_title_icon: ''
+  ntv_block_background:
+    disable: disable
+    color: '#000000'
+    bg_image: ''
+    bg_image_type: default
+    bg_repeat: 'no'
+    bg_image_position: ''
+    bg_image_size: ''
+    background_overlay: ''
+id: blockbookingandcontactstrekpage
+theme: drupalet_alpins
+region: content
+weight: 8
+provider: null
+plugin: 'block_content:82c02057-7345-4263-b430-f445d4f5e7a3'
+settings:
+  id: 'block_content:82c02057-7345-4263-b430-f445d4f5e7a3'
+  label: 'block Booking and contacts - trek page'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: page_trek
